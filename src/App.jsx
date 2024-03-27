@@ -9,6 +9,7 @@ import Navigation from './components/Navigation/Navigation'
 import Footer from './components/Footer/Footer'
 import MainRecipe from './components/MainRecipe/MainRecipe'
 import Intro from './components/Intro/Intro'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const [selectedRecipe, setSelectedRecipe] = useState(null)
@@ -62,7 +63,8 @@ function App() {
 
   return (
     <>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"></link>
+    <Analytics/>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"></link>
 
     <Header blogTitle={blogTitle} />
     <Navigation selectTab={selectTab} tab={tab}/>
