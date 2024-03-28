@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { RECIPES } from './data'
 import RecipeCard from './components/RecipeCard/RecipeCard'
@@ -61,6 +59,21 @@ function App() {
     focusRecipe(RECIPES[randomIndex], false);
   }
 
+  useEffect(() => {
+    // check for already focused recipe
+    const path = window.location.pathname;
+    const recipeSlug = path.split('/recipe/')[1];
+    if (recipeSlug) {
+      const foundRecipe = RECIPES.find((recipe) => recipe.id === recipeSlug);
+      if (foundRecipe) {
+        setSelectedRecipe(foundRecipe);
+      } else {
+        // clear it
+        clearRecipe();
+      }
+    }
+  }, []);
+
   return (
     <>
     <Analytics/>
@@ -81,4 +94,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
