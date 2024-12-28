@@ -37,6 +37,7 @@ article {
 article h2 {
     color: #333;
     margin: 10px 0px;
+    cursor: pointer;
 }
 
 .recipe-card h2 {
