@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { RECIPES } from './data'
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-import Home from './pages/Home'
+import Recipe from './pages/Recipe'
 import About from './pages/About'
-import RecipeCard from './components/RecipeCard/RecipeCard'
 import Header from './components/Header/Header'
 import Intro from './components/Intro/Intro'
 import Navigation from './components/Navigation/Navigation'
 import Footer from './components/Footer/Footer'
 import MainRecipe from './components/MainRecipe/MainRecipe'
 import { Analytics } from "@vercel/analytics/react"
+import RecipeGallery from './components/RecipeGallery/RecipeGallery';
 
 function App() {
   const blogTitle = 'Simple Drip Dinners';
@@ -26,6 +26,7 @@ function App() {
     if (recipeSlug) {
       const foundRecipe = RECIPES.find((recipe) => recipe.id === recipeSlug);
       if (foundRecipe) {
+        console.log('found recipe', foundRecipe);
         setSelectedRecipe(foundRecipe);
       } else {
         // clear it
@@ -94,11 +95,11 @@ function App() {
     <section className="main-content">
         <Routes>
           <Route path="/" element={<Intro blogTitle={blogTitle} />} />
-          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/about" element={<About />} />
-          <Route path="/recipe/:recipeId" element={<Home />} />
+          <Route path="/recipe/:recipeId" element={<Recipe selectedRecipe={selectedRecipe}/>} />
         </Routes>
     </section>
+    <RecipeGallery readMoreAction={focusRecipe}></RecipeGallery>
     <Footer blogTitle={blogTitle} />
   </>
 }
