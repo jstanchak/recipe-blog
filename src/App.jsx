@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { RECIPES } from './data'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Recipe from './pages/Recipe'
 import About from './pages/About'
 import Header from './components/Header/Header'
 import Intro from './components/Intro/Intro'
 import Navigation from './components/Navigation/Navigation'
 import Footer from './components/Footer/Footer'
-import MainRecipe from './components/MainRecipe/MainRecipe'
 import { Analytics } from "@vercel/analytics/react"
 import RecipeGallery from './components/RecipeGallery/RecipeGallery';
 
@@ -26,7 +25,6 @@ function App() {
     if (recipeSlug) {
       const foundRecipe = RECIPES.find((recipe) => recipe.id === recipeSlug);
       if (foundRecipe) {
-        console.log('found recipe', foundRecipe);
         setSelectedRecipe(foundRecipe);
       } else {
         // clear it
@@ -38,13 +36,10 @@ function App() {
   function selectTab(index) {
       setTab(index);
       if (index == 0) {
-          clearRecipe();
           navigate('/');
       } else if (index == 2) {
         surpriseRecipe();
       } else if (index == 4 ) {
-        focusRecipe(null);
-        const newUrl = `/about`; 
         navigate('/about');
       }
   }
@@ -66,7 +61,6 @@ function App() {
     });
     // Change the URL
     if (recipe) {
-      
       const newUrl = `/recipe/${recipe.id}`; // Assuming each recipe has a unique 'id' property
       window.history.pushState({ recipeId: recipe.id }, recipe.title, newUrl);
       document.title = recipe.title; // Optionally, change the document title to the recipe title

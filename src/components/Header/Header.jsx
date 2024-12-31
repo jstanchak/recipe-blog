@@ -1,10 +1,8 @@
 
-import "./Header.css";
-
 export default function Header({blogTitle}) {
   return (
-    <header >
-      <h1>{blogTitle}</h1>
+    <header className="text-white text-center py-5">
+      <h1 className="font-title text-5xl font-bold">{blogTitle}</h1>
     </header>
   )
 }
