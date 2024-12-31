@@ -4,25 +4,11 @@
   padding: 0;
 }
 
-
-.ivory {
-  background-color: #fefef1;
-  background-color: #fffff8;
-}
-
-.sage {
-  background-color: #e1e5db;
-}
-
 h1, h2 {
   font-family: 'Merriweather', serif;
   color: #333;
 }
 
-body, p {
-  font-family: 'Montserrat', sans-serif;
-  color: #333;
-}
 
 #root {
   text-align: center;
@@ -48,7 +34,7 @@ body, p {
 
 .main-content {
   display: flex;
-  max-width: 1280px;
+  /* max-width: 1280px; */
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 2rem;
